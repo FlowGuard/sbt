@@ -5,7 +5,7 @@
 #
 
 # Pull base image
-FROM openjdk:11
+FROM openjdk:11-jdk-slim
 
 # Env variables
 ENV SCALA_VERSION 2.12.8
