@@ -16,6 +16,9 @@ RUN touch /usr/lib/jvm/java-11-openjdk-amd64/release
 
 # Install Scala
 RUN \
+  apt update && \
+  apt install -y curl --no-install-recommends && \
+  rm -rf /var/lib/apt/lists/* && \
   curl -fsL https://downloads.typesafe.com/scala/$SCALA_VERSION/scala-$SCALA_VERSION.tgz | tar xfz - -C /opt/ && \
   echo >> /root/.bashrc && \
   echo "export PATH=/opt/scala-$SCALA_VERSION/bin:\$PATH" >> /root/.bashrc
