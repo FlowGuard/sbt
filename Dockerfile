@@ -12,6 +12,11 @@ ENV SCALA_VERSION 2.12.10
 ENV SBT_VERSION 1.3.8
 ENV NODE_VERSION 12.15.0
 
+# Add curl
+RUN apt update && \
+    apt install curl xz-utils unzip --no-install-recommends -y && \
+    rm -rf /var/lib/apt/lists/*
+
 # Scala expects this file
 RUN mkdir -p /usr/lib/jvm/ && \
     ln -s /usr/local/openjdk-11/ /usr/lib/jvm/java-11-openjdk-amd64 && \
