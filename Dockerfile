@@ -10,15 +10,23 @@ FROM openjdk:11-jdk-slim
 # Env variables
 ENV SCALA_VERSION 2.12.10
 ENV SBT_VERSION 1.3.8
+ENV NODE_VERSION 12.15.0
 
 # Scala expects this file
-RUN touch /usr/lib/jvm/java-8-openjdk-amd64/release
+RUN mkdir -p /usr/lib/jvm/ && \
+    ln -s /usr/local/openjdk-11/ /usr/lib/jvm/java-11-openjdk-amd64 && \
+    touch /usr/lib/jvm/java-11-openjdk-amd64/release
 
 # Install Scala
 RUN \
   curl -fsL https://downloads.typesafe.com/scala/$SCALA_VERSION/scala-$SCALA_VERSION.tgz | tar xfz - -C /opt/ && \
   echo >> /root/.bashrc && \
   echo "export PATH=/opt/scala-$SCALA_VERSION/bin:\$PATH" >> /root/.bashrc
+
+# Instal nodejs
+RUN \
+  curl -fsL https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz | tar xJf - -C /opt && \
+  echo "export PATH=/opt/node-v$NODE_VERSION-linux-x64/bin:\$PATH" >> /root/.bashrc
 
 # Install sbt
 RUN \
