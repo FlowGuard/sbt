@@ -20,9 +20,11 @@ RUN \
   echo >> /root/.bashrc && \
   echo "export PATH=/opt/scala-$SCALA_VERSION/bin:\$PATH" >> /root/.bashrc
 
+WORKDIR /root
+
 # Install sbt
 RUN \
-  curl -L -O https://piccolo.link/sbt-${SBT_VERSION}.zip && \
+  curl -L -O https://github.com/sbt/sbt/releases/download/v${SBT_VERSION}/sbt-${SBT_VERSION}.zip && \
   unzip -q sbt-${SBT_VERSION}.zip -d /opt && \
   rm sbt-${SBT_VERSION}.zip && \
   echo "export PATH=/opt/sbt/bin/:\$PATH" >> /root/.bashrc && \
