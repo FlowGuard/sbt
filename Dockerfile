@@ -8,14 +8,8 @@
 FROM openjdk:11-jdk-slim
 
 # Env variables
-ENV SCALA_VERSION 2.12.10
-ENV SBT_VERSION 1.3.8
-ENV NODE_VERSION 12.15.0
-
-# Add curl
-RUN apt update && \
-    apt install curl xz-utils unzip --no-install-recommends -y && \
-    rm -rf /var/lib/apt/lists/*
+ENV SCALA_VERSION 2.11.12
+ENV SBT_VERSION 1.5.0
 
 # Scala expects this file
 RUN mkdir -p /usr/lib/jvm/ && \
@@ -28,14 +22,11 @@ RUN \
   echo >> /root/.bashrc && \
   echo "export PATH=/opt/scala-$SCALA_VERSION/bin:\$PATH" >> /root/.bashrc
 
-# Instal nodejs
-RUN \
-  curl -fsL https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz | tar xJf - -C /opt && \
-  echo "export PATH=/opt/node-v$NODE_VERSION-linux-x64/bin:\$PATH" >> /root/.bashrc
+WORKDIR /root
 
 # Install sbt
 RUN \
-  curl -L -O https://piccolo.link/sbt-${SBT_VERSION}.zip && \
+  curl -L -O https://github.com/sbt/sbt/releases/download/v${SBT_VERSION}/sbt-${SBT_VERSION}.zip && \
   unzip -q sbt-${SBT_VERSION}.zip -d /opt && \
   rm sbt-${SBT_VERSION}.zip && \
   echo "export PATH=/opt/sbt/bin/:\$PATH" >> /root/.bashrc && \
