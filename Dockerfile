@@ -5,16 +5,14 @@
 #
 
 # Pull base image
-FROM openjdk:11-jdk-slim
+FROM openjdk:8u181
 
 # Env variables
 ENV SCALA_VERSION 2.11.12
 ENV SBT_VERSION 1.5.0
 
 # Scala expects this file
-RUN mkdir -p /usr/lib/jvm/ && \
-    ln -s /usr/local/openjdk-11/ /usr/lib/jvm/java-11-openjdk-amd64 && \
-    touch /usr/lib/jvm/java-11-openjdk-amd64/release
+RUN touch /usr/lib/jvm/java-8-openjdk-amd64/release
 
 # Install Scala
 RUN \
