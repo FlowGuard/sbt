@@ -33,14 +33,21 @@ RUN \
   curl -fsL https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz | tar xJf - -C /opt && \
   echo "export PATH=/opt/node-v$NODE_VERSION-linux-x64/bin:\$PATH" >> /root/.bashrc
 
+RUN mkdir -p /sbt
+
+WORKDIR /sbt
+
 # Install sbt
 RUN \
-  curl -L -O https://piccolo.link/sbt-${SBT_VERSION}.zip && \
+  curl -L -O https://github.com/sbt/sbt/releases/download/v${SBT_VERSION}/sbt-${SBT_VERSION}.zip && \
   unzip -q sbt-${SBT_VERSION}.zip -d /opt && \
   rm sbt-${SBT_VERSION}.zip && \
   echo "export PATH=/opt/sbt/bin/:\$PATH" >> /root/.bashrc && \
   . /root/.bashrc; sbt sbtVersion && \
   ln -s /opt/sbt/bin/sbt /usr/bin/sbt
+
+
+
 
 # Create workdir
 RUN mkdir -p /jenkins/workspace
