@@ -5,11 +5,11 @@
 #
 
 # Pull base image
-FROM openjdk:11-jdk-slim
+FROM openjdk:21-jdk-slim
 
 # Env variables
-ENV SCALA_VERSION 2.12.10
-ENV SBT_VERSION 1.3.8
+ENV SCALA_VERSION 2.13.8
+ENV SBT_VERSION 1.10.0
 ENV NODE_VERSION 12.15.0
 
 # Add curl
@@ -19,8 +19,8 @@ RUN apt update && \
 
 # Scala expects this file
 RUN mkdir -p /usr/lib/jvm/ && \
-    ln -s /usr/local/openjdk-11/ /usr/lib/jvm/java-11-openjdk-amd64 && \
-    touch /usr/lib/jvm/java-11-openjdk-amd64/release
+    ln -s /usr/local/openjdk-21/ /usr/lib/jvm/java-21-openjdk-amd64 && \
+    touch /usr/lib/jvm/java-21-openjdk-amd64/release
 
 # Install Scala
 RUN \
