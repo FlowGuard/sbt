@@ -13,8 +13,8 @@ ENV SBT_VERSION 1.10.0
 ENV NODE_VERSION 12.15.0
 
 # Add curl
-RUN apt update && \
-    apt install curl xz-utils unzip --no-install-recommends -y && \
+RUN apt-get update && \
+    apt-get install curl xz-utils unzip --no-install-recommends -y && \
     rm -rf /var/lib/apt/lists/*
 
 # Scala expects this file
