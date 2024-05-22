@@ -14,7 +14,7 @@ ENV NODE_VERSION 12.15.0
 
 # Add curl
 RUN apt-get update && \
-    apt-get install curl xz-utils unzip --no-install-recommends -y && \
+    apt-get install -y apt-transport-https curl xz-utils unzip --no-install-recommends -y && \
     rm -rf /var/lib/apt/lists/*
 
 # Scala expects this file
