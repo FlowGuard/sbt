@@ -5,7 +5,7 @@
 #
 
 # Pull base image
-FROM openjdk:21-jdk-slim
+FROM openjdk:21-jdk-slim-bullseye
 
 # Env variables
 ENV SCALA_VERSION 2.13.8
