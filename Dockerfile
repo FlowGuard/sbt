@@ -9,7 +9,7 @@ FROM openjdk:21-jdk-slim-bullseye
 
 # Env variables
 ENV SCALA_VERSION 2.13.8
-ENV SBT_VERSION 1.10.0
+ENV SBT_VERSION 1.9.0
 ENV NODE_VERSION 12.15.0
 
 # Add curl
