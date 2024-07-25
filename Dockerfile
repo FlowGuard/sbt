@@ -8,14 +8,8 @@
 FROM debian:buster-slim
 
 ARG version=11.0.24.8-1
-# In addition to installing the Amazon corretto, we also install
-# fontconfig. The folks who manage the docker hub's
-# official image library have found that font management
-# is a common usecase, and painpoint, and have
-# recommended that Java images include font support.
-#
-# See:
-#  https://github.com/docker-library/official-images/blob/master/test/tests/java-uimanager-font/container.java
+# pulling fresh image and setting it uo the same way as the amazoncorretto 11.0.24-deb image
+# (pre-created images are mostly alipnes)
 
 # Env variables
 ENV LANG C.UTF-8
