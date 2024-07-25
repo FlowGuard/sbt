@@ -21,7 +21,7 @@ ARG version=11.0.24.8-1
 ENV LANG C.UTF-8
 ENV JAVA_HOME=/usr/lib/jvm/java-11-amazon-corretto
 ENV SCALA_VERSION 2.13.0
-ENV SBT_VERSION 1.3.0
+ENV SBT_VERSION 1.3.1
 ENV NODE_VERSION 12.15.0
 
 RUN set -eux \
@@ -33,7 +33,6 @@ RUN set -eux \
     && mkdir -p /usr/share/man/man1 || true \
     && apt-get update \
     && apt-get install -y java-11-amazon-corretto-jdk=1:$version
-
 
 
 ## Scala expects this file
